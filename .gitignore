@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtualenv
+.venv/
+venv/
+
+# Streamlit
+.streamlit/
+
+# Data & index files created at runtime
+data/
+.chroma/
+outputs/
+*.wav
+*.mp3
+*.m4a
+*.mp4
+
+# Secrets (don’t commit your keys)
+.env
+
+# OS
+.DS_Store
+Thumbs.db

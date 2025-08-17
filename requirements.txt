@@ -1,0 +1,13 @@
+streamlit
+python-dotenv
+pydub
+faster-whisper
+chromadb>=0.5.0
+sentence-transformers
+numpy
+pandas
+tqdm
+librosa
+scikit-learn
+rank-bm25
+openai>=1.30.0
