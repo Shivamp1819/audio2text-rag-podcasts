@@ -1,4 +1,7 @@
+import sys, os
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from ingest import process_episode
+
 import json
 import time
 from pathlib import Path
