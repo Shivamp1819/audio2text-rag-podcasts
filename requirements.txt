@@ -3,7 +3,7 @@ ffmpeg-python
 python-dotenv
 pydub
 faster-whisper
-chromadb>=0.5.0
+chromadb>=0.4.24
 sentence-transformers
 numpy==1.26.4
 pandas
@@ -16,3 +16,4 @@ pydantic==1.10.11
 fastapi==0.110.0
 uvicorn
 tiktoken
+pysqlite3-binary
