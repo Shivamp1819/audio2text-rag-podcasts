@@ -22,7 +22,7 @@ class ChunkRecord:
     speakers: list
 
 def get_client():
-    return chromadb.PersistentClient(path=str(CHROMA_DB_DIR))
+    return chromadb.Client()
 
 def get_or_create_collection(client=None):
     if client is None:

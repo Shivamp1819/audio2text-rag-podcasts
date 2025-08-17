@@ -1,7 +1,7 @@
 import json
 import uuid
 from pathlib import Path
-from typing import List, Dict
+from typing import Dict
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -13,6 +13,7 @@ from utils.audio import ensure_wav_16k_mono
 from utils.diarize import diarize_by_clustering
 from utils.chunking import merge_segments_to_chunks
 from utils.index import ChunkRecord, index_chunks
+
 
 def transcribe_audio(audio_path: Path) -> Dict:
     model = WhisperModel(WHISPER_MODEL_SIZE, device="auto", compute_type="auto")
@@ -29,6 +30,7 @@ def transcribe_audio(audio_path: Path) -> Dict:
         "language": info.language,
         "segments": out
     }
+
 
 def process_episode(episode_title: str, file_path: Path, episode_id: str = None, diarize: bool = True) -> Dict:
     episode_id = episode_id or str(uuid.uuid4())
@@ -76,16 +78,18 @@ def process_episode(episode_title: str, file_path: Path, episode_id: str = None,
     # Index chunks
     records = []
     for ch in chunks:
-        records.append(ChunkRecord(
-    id=f"{episode_id}:{ch['chunk_id']}",
-    episode_id=episode_id,
-    episode_title=episode_title,
-    audio_path=str(target),
-    start=float(ch['start']),
-    end=float(ch['end']),
-    text=ch['text'],
-    speakers=", ".join(ch['speakers']) if isinstance(ch['speakers'], list) else str(ch['speakers']),
-))
+        records.append(
+            ChunkRecord(
+                id=f"{episode_id}:{ch['chunk_id']}",
+                episode_id=episode_id,
+                episode_title=episode_title,
+                audio_path=str(target),
+                start=float(ch['start']),
+                end=float(ch['end']),
+                text=ch['text'],
+                speakers=", ".join(ch['speakers']) if isinstance(ch['speakers'], list) else str(ch['speakers']),
+            )
+        )
 
     index_chunks(records)
 
