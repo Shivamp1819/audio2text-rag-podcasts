@@ -1,4 +1,4 @@
-from my_package.ingest import process_episode
+from ingest import process_episode
 import json
 import time
 from pathlib import Path
