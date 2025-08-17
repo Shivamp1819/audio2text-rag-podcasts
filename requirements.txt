@@ -4,6 +4,7 @@ python-dotenv
 pydub
 faster-whisper
 chromadb>=0.4.24
+langchain
 sentence-transformers
 numpy==1.26.4
 pandas
